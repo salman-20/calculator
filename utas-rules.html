@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>قوانين UTAS · سلمان UTASA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+/* ===== SALMAN UTASA — shared design system ===== */
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-ExtraLight.ttf") format("truetype");font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-Medium.ttf") format("truetype");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-Bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-ExtraBold.ttf") format("truetype");font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-Black.ttf") format("truetype");font-weight:900;font-style:normal;font-display:swap}
+/* Formal system: white surfaces, hairline borders, one accent (purple), Tajawal only */
+:root{
+  --primary:#6c5ce7; --primary-dark:#5847d8; --primary-soft:#efecfe; --secondary:#00b5b0;
+  --bg:#f5f5fb; --surface:#ffffff; --sunk:#f8f7fd; --line:#e7e6f2; --line-strong:#d7d5e8;
+  --ink:#1d1b3a; --muted:#5b5c7c; --faint:#8b8ca8;
+  --good:#0f8a6c; --good-soft:#e5f5f0; --warn:#9a6a0b; --warn-soft:#fbf1dc; --bad:#c8283f; --bad-soft:#fdebee;
+  --shadow:0 1px 2px rgba(30,33,64,.04), 0 4px 14px rgba(30,33,64,.04);
+  --shadow-hover:0 2px 4px rgba(30,33,64,.05), 0 10px 26px rgba(30,33,64,.08);
+  --grad:linear-gradient(135deg,#7464f0,#5847d8); --grad-btn:linear-gradient(135deg,#7464f0,#5847d8);
+  --f-body:"Tajawal","Segoe UI",Tahoma,sans-serif; --f-brand:var(--f-body); --f-word:"Pacifico","Tajawal",cursive;
+  --radius:14px; color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-body);background:linear-gradient(180deg,#efedfd 0px,var(--bg) 420px) no-repeat,var(--bg);color:var(--ink);line-height:1.7;font-size:16px;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%}
+.atmo{display:none}
+
+.shell{max-width:1060px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+
+/* header */
+.topbar{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
+.topbar .shell{display:flex;align-items:center;gap:24px;min-height:68px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:none;direction:ltr}
+.brand .mark{width:36px;height:36px;border-radius:10px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:16px}
+.brand .word{font-family:var(--f-word);font-weight:400;font-size:1.3rem;letter-spacing:.01em;color:var(--ink);line-height:1.2}
+.nav{display:flex;gap:4px;margin-inline-start:auto;overflow-x:auto;scrollbar-width:none;align-self:stretch}
+.nav::-webkit-scrollbar{display:none}
+.nav a{text-decoration:none;white-space:nowrap;font-size:.95rem;font-weight:500;color:var(--muted);padding:0 14px;display:flex;align-items:center;gap:8px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s}
+.nav a i{font-size:.82rem;color:var(--faint);transition:color .2s}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--primary);font-weight:700;border-bottom-color:var(--primary)}
+.nav a.on i{color:var(--primary)}
+@media (max-width:820px){
+  .topbar .shell{flex-wrap:wrap;gap:0;min-height:0;padding-top:12px}
+  .nav{margin-inline-start:0;width:100%;order:2;margin-top:8px}
+  .nav a{padding:10px 10px;font-size:.9rem}
+}
+@media (max-width:480px){ .nav{justify-content:space-between} .nav a{padding:10px 4px;font-size:.88rem} .nav a i{display:none} }
+
+/* page frame */
+.page{padding-block:40px 24px;display:flex;flex-direction:column;gap:28px}
+.page-head{display:flex;flex-direction:column;gap:8px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.page-head .kicker{font-size:.85rem;font-weight:700;color:var(--primary);letter-spacing:.02em}
+.page-head h1{font-size:clamp(1.8rem,4.5vw,2.4rem);font-weight:800;line-height:1.25;color:var(--ink)}
+.page-head p{color:var(--muted);font-size:1.02rem;max-width:62ch}
+h1,h2,h3{text-wrap:balance}
+.grad-text{color:var(--primary)}
+
+/* surfaces */
+.glass{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.section-title{font-size:1.15rem;font-weight:800;display:flex;align-items:center;gap:10px}
+.section-title i{color:var(--primary);font-size:1rem}
+
+/* list item used on every page */
+.item{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);min-width:0;transition:border-color .2s, box-shadow .2s}
+.item:hover{border-color:#b9b0f6;box-shadow:var(--shadow-hover)}
+.item .ic{width:44px;height:44px;border-radius:10px;flex:none;display:grid;place-items:center;background:var(--primary-soft);color:var(--primary);font-size:18px}
+.item .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.item .tx b{font-size:1rem;font-weight:700;line-height:1.45}
+.item .tx span{font-size:.86rem;color:var(--muted);line-height:1.5}
+.item .go{flex:none;color:var(--faint);font-size:.8rem;transition:color .2s, transform .2s}
+.item:hover .go{color:var(--primary);transform:translateX(-3px)}
+
+/* buttons & inputs */
+.btn{font:inherit;font-weight:700;border:0;cursor:pointer;border-radius:10px;padding:11px 20px;display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;transition:background .2s,border-color .2s,color .2s}
+.btn-grad{background:var(--grad-btn);color:#fff;box-shadow:0 4px 12px rgba(108,92,231,.25)}
+.btn-grad:hover{filter:brightness(1.06)}
+.btn-soft{background:var(--surface);color:var(--ink);border:1px solid var(--line-strong)}
+.btn-soft:hover{border-color:var(--primary);color:var(--primary)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:8px}
+
+.socials{display:flex;gap:8px}
+.socials a{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;text-decoration:none;color:var(--primary);background:var(--primary-soft);transition:background .2s,color .2s}
+.socials a:hover{background:var(--primary);color:#fff}
+
+/* footer */
+.foot{margin-top:48px;border-top:1px solid var(--line);background:var(--surface)}
+.foot .shell{display:flex;justify-content:center;padding-block:22px}
+.foot p{font-size:.88rem;color:var(--faint)}
+
+@media (prefers-reduced-motion: reduce){ *,*::before,*::after{transition:none!important;scroll-behavior:auto!important} }
+
+</style>
+<style>
+/* rules: standard page head + two-column list of video items */
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.item .tx span{direction:ltr;text-align:right}
+@media (max-width:720px){ .list{grid-template-columns:1fr} }
+</style>
+
+</head>
+<body>
+<header class="topbar">
+  <div class="shell">
+    <a class="brand" href="index.html" aria-label="SALMAN UTASA — الصفحة الرئيسية">
+      <span class="mark"><i class="fa-solid fa-graduation-cap"></i></span>
+      <span class="word">Salman <span style="color:var(--primary)">Utasa</span></span>
+    </a>
+    <nav class="nav" aria-label="صفحات الموقع">
+      <a href="index.html"><i class="fa-solid fa-house"></i>الرئيسية</a>
+      <a href="utas-rules.html" class="on" aria-current="page"><i class="fa-solid fa-book-open"></i>قوانين UTAS</a>
+      <a href="summaries.html"><i class="fa-solid fa-laptop-code"></i>شروحات IT</a>
+      <a href="calculator.html"><i class="fa-solid fa-calculator"></i>حاسبة المعدل</a>
+    </nav>
+  </div>
+</header>
+
+<main class="shell page">
+  <header class="page-head">
+    <span class="kicker">UTAS Rules</span>
+    <h1>شروحات وإجراءات UTAS</h1>
+    <p>شرح وتوضيح أهم الإجراءات والقوانين للطلبة. اضغط على الشرح لفتح الفيديو.</p>
+  </header>
+  <section class="list" id="list"></section>
+</main>
+<script>
+const IG = id => `https://www.instagram.com/reel/${id}/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==`;
+const VIDEOS = [
+  { c:'req',  icon:'fa-file-circle-minus',    t:'طريقة تقديم طلب حذف مقرر دراسي', en:'How to submit a request to drop a course.', id:'DPV2esdiPyt' },
+  { c:'req',  icon:'fa-calendar-xmark',       t:'طريقة تقديم طلب تأجيل الفصل الدراسي', en:'How to submit a semester postponement request.', id:'DPWiP3yCAlR' },
+  { c:'req',  icon:'fa-right-left',           t:'طريقة تقديم طلب النقل بين الفروع', en:'How to submit a request to transfer between UTAS branches.', id:'DPwbB-fCGCM' },
+  { c:'req',  icon:'fa-shuffle',              t:'طريقة تقديم طلب تغيير التخصص', en:'How to submit a request to change your specialization.', id:'Dcq0mTwAI1L' },
+  { c:'req',  icon:'fa-scale-balanced',       t:'طريقة تقديم تظلم على النتائج (درجات)', en:'How to submit an appeal regarding your results (grades).', id:'DTqyvk4AP1C' },
+  { c:'req',  icon:'fa-file-circle-check',    t:'طريقة عمل إخلاء طرف', en:'How to complete the university clearance process.', id:'DTXr0PoiK8k' },
+  { c:'req',  icon:'fa-file-pen',             t:'طريقة رفع عذر لاختبار الإعادة', en:'How to submit an excuse for a make-up exam.', id:'DQHV48AiAou' },
+  { c:'reg',  icon:'fa-display',              t:'طريقة فتح موقع CIMS بوضعية الكمبيوتر', en:'How to open the CIMS website in desktop mode on your phone.', id:'DUsJ6ikgG0A' },
+  { c:'reg',  icon:'fa-eye',                  t:'طريقة مشاهدة المواد والسكاشن', en:'How to view courses and class sections in the system.', id:'DUFY6sPCL_I' },
+  { c:'reg',  icon:'fa-pen-to-square',        t:'طريقة تسجيل السكاشن لطلاب التخصص والفاونديشن', en:'How to register for class sections for specialization and foundation students.', id:'DUUxt0AiLuh' },
+  { c:'reg',  icon:'fa-clock',                t:'برنامج يضبط لك الجدول والسكاشن', en:'A program that helps you organize your schedule and class sections.', id:'DUKtE6DCGYr' },
+  { c:'gpa',  icon:'fa-list-check',           t:'الحد الأقصى لكل مستوى دراسي', en:'Explanation of the maximum study period allowed for each study level.', id:'DT-mf4aCGFR' },
+  { c:'gpa',  icon:'fa-award',                t:'لوحة الشرف وتكريم المجيدين', en:'Explanation of the Honor Roll and student recognition.', id:'DTpLNayCHTl' },
+  { c:'tips', icon:'fa-briefcase',            t:'شرح كل ما يخص التدريب على رأس العمل (OJT)', en:'Everything you need to know about On-the-Job Training (OJT).', id:'DTn30wsgN9h' },
+  { c:'fnd',  icon:'fa-book-open',            t:'شرح قوانين ونظام الفاونديشن', en:'Explanation of Foundation rules and regulations.', id:'DTpRXNNAFiE' },
+  { c:'fnd',  icon:'fa-rotate-right',         t:'نظام الرسوب والإعادة لطلبة الفاونديشن', en:'Explanation of the failure and retake system for Foundation students.', id:'DTqqfoEAF-6' },
+  { c:'gpa',  icon:'fa-triangle-exclamation', t:'تحت الملاحظة الأكاديمية', en:'Explanation of the Academic Probation status.', id:'DTPyNpRCJ3g' },
+  { c:'gpa',  icon:'fa-repeat',               t:'كم فرصة للطالب تحت الملاحظة الأكاديمية؟', en:'Explanation of the available chances for students under Academic Probation.', id:'DZ0jE0WqxoZ' },
+  { c:'gpa',  icon:'fa-arrow-right-arrow-left', t:'فرق المعدل والانتقال بين المستويات في النظام القديم والجديد', en:'Explanation of the changes in level progression between the old and new systems.', id:'DZukzLaAmWH' },
+  { c:'gpa',  icon:'fa-calculator',           t:'شرح كل اللي يخص المعدل (GPA)', en:'Complete explanation of the GPA and cumulative GPA system.', id:'DTQsBW8ADxv' },
+  { c:'gpa',  icon:'fa-calculator',           t:'طريقة حساب المعدل (GPA)', en:'Step-by-step explanation of how to calculate your GPA.', id:'DTmq4KaCMF3' },
+  { c:'tips', icon:'fa-book',                 t:'طريقة مذاكرة مواد الثيوري', en:'Tips and methods for studying theory-based courses effectively.', id:'DRPeCE9iAxf' },
+  { c:'fnd',  icon:'fa-graduation-cap',       t:'كيف تعرف مستواك: دبلوم، دبلوم عالي أو بكالوريوس؟', en:'How Foundation students can identify their Diploma, Higher Diploma, or Bachelor level.', id:'DTqsCfgAKin' },
+  { c:'tips', icon:'fa-file-lines',           t:'طريقة عمل سيرة ذاتية (CV)', en:'Step-by-step guide on how to create a professional CV.', id:'DZ-Xfmgg9wA' },
+  { c:'gpa',  icon:'fa-chart-line',           t:'كيف تشوف معدلك الجديد قبل نزول النتائج؟ (الجزء الأول)', en:'How to check your new GPA before the official results are released.', id:'DZpOByLKKHI' },
+  { c:'gpa',  icon:'fa-chart-line',           t:'كيف تشوف معدلك الجديد قبل نزول النتائج؟ (الجزء الثاني)', en:'How to check your new GPA before the official results are released.', id:'DZpZga7qrfb' },
+];
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.getElementById('list').innerHTML = VIDEOS.map(v => `
+  <a class="item" href="${IG(v.id)}" target="_blank" rel="noopener">
+    <span class="ic"><i class="fa-solid ${v.icon}"></i></span>
+    <span class="tx"><b>${esc(v.t)}</b><span>${esc(v.en)}</span></span>
+    <i class="go fa-solid fa-arrow-up-right-from-square"></i>
+  </a>`).join('');
+</script>
+
+<footer class="foot">
+  <div class="shell"><p>© <span class="yr"></span> سلمان يوتاسا</p></div>
+</footer>
+<script>document.querySelectorAll('.yr').forEach(e=>e.textContent=new Date().getFullYear());</script>
+</body>
+</html>
