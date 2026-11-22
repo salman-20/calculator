@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title data-en="Salman Utasa">سلمان UTASA</title>
+<script>var LANG=(function(){try{return localStorage.getItem('su-lang')||'ar'}catch(e){return 'ar'}})();document.documentElement.lang=LANG;document.documentElement.dir=LANG==='en'?'ltr':'rtl';function L(a,e){return LANG==='en'?e:a}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+/* ===== SALMAN UTASA — shared design system ===== */
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-ExtraLight.ttf") format("truetype");font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-Medium.ttf") format("truetype");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-Bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-ExtraBold.ttf") format("truetype");font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:"Tajawal";src:url("fonts/Tajawal-Black.ttf") format("truetype");font-weight:900;font-style:normal;font-display:swap}
+/* Formal system: white surfaces, hairline borders, one accent (purple), Tajawal only */
+:root{
+  --primary:#6c5ce7; --primary-dark:#5847d8; --primary-soft:#efecfe; --secondary:#00b5b0;
+  --bg:#f5f5fb; --surface:#ffffff; --sunk:#f8f7fd; --line:#e7e6f2; --line-strong:#d7d5e8;
+  --ink:#1d1b3a; --muted:#5b5c7c; --faint:#8b8ca8;
+  --good:#0f8a6c; --good-soft:#e5f5f0; --warn:#9a6a0b; --warn-soft:#fbf1dc; --bad:#c8283f; --bad-soft:#fdebee;
+  --shadow:0 1px 2px rgba(30,33,64,.04), 0 4px 14px rgba(30,33,64,.04);
+  --shadow-hover:0 2px 4px rgba(30,33,64,.05), 0 10px 26px rgba(30,33,64,.08);
+  --grad:linear-gradient(135deg,#7464f0,#5847d8); --grad-btn:linear-gradient(135deg,#7464f0,#5847d8);
+  --f-body:"Tajawal","Segoe UI",Tahoma,sans-serif; --f-brand:var(--f-body); --f-word:"Pacifico","Tajawal",cursive;
+  --radius:14px; color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-body);background:linear-gradient(180deg,#efedfd 0px,var(--bg) 420px) no-repeat,var(--bg);color:var(--ink);line-height:1.7;font-size:16px;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%}
+.atmo{display:none}
+
+.shell{max-width:1060px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+
+/* header */
+.topbar{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
+.topbar .shell{display:flex;align-items:center;gap:24px;min-height:68px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:none;direction:ltr}
+.brand .mark{width:36px;height:36px;border-radius:10px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:16px}
+.brand .word{font-family:var(--f-word);font-weight:400;font-size:1.3rem;letter-spacing:.01em;color:var(--ink);line-height:1.2}
+.brand{order:0}
+.nav{order:1;display:flex;gap:4px;margin-inline-start:auto;overflow-x:auto;scrollbar-width:none;align-self:stretch}
+.nav::-webkit-scrollbar{display:none}
+.nav a{text-decoration:none;white-space:nowrap;font-size:.95rem;font-weight:500;color:var(--muted);padding:0 14px;display:flex;align-items:center;gap:8px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s}
+.nav a i{font-size:.82rem;color:var(--faint);transition:color .2s}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--primary);font-weight:700;border-bottom-color:var(--primary)}
+.nav a.on i{color:var(--primary)}
+@media (max-width:820px){
+  .topbar .shell{flex-wrap:wrap;gap:0;min-height:0;padding-top:12px}
+  .nav{margin-inline-start:0;width:100%;order:2;margin-top:8px}
+  .nav a{padding:10px 10px;font-size:.9rem}
+}
+@media (max-width:480px){ .nav{justify-content:space-between} .nav a{padding:10px 4px;font-size:.88rem} .nav a i{display:none} }
+
+/* page frame */
+.page{padding-block:40px 24px;display:flex;flex-direction:column;gap:28px}
+.page-head{display:flex;flex-direction:column;gap:8px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.page-head .kicker{font-size:.85rem;font-weight:700;color:var(--primary);letter-spacing:.02em}
+.page-head h1{font-size:clamp(1.8rem,4.5vw,2.4rem);font-weight:800;line-height:1.25;color:var(--ink)}
+.page-head p{color:var(--muted);font-size:1.02rem;max-width:62ch}
+h1,h2,h3{text-wrap:balance}
+.grad-text{color:var(--primary)}
+
+/* surfaces */
+.glass{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.section-title{font-size:1.15rem;font-weight:800;display:flex;align-items:center;gap:10px}
+.section-title i{color:var(--primary);font-size:1rem}
+
+/* list item used on every page */
+.item{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);min-width:0;transition:border-color .2s, box-shadow .2s}
+.item:hover{border-color:#b9b0f6;box-shadow:var(--shadow-hover)}
+.item .ic{width:44px;height:44px;border-radius:10px;flex:none;display:grid;place-items:center;background:var(--primary-soft);color:var(--primary);font-size:18px}
+.item .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.item .tx b{font-size:1rem;font-weight:700;line-height:1.45}
+.item .tx span{font-size:.86rem;color:var(--muted);line-height:1.5}
+.item .go{flex:none;color:var(--faint);font-size:.8rem;transition:color .2s, transform .2s}
+.item:hover .go{color:var(--primary);transform:translateX(-3px)}
+
+/* buttons & inputs */
+.btn{font:inherit;font-weight:700;border:0;cursor:pointer;border-radius:10px;padding:11px 20px;display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;transition:background .2s,border-color .2s,color .2s}
+.btn-grad{background:var(--grad-btn);color:#fff;box-shadow:0 4px 12px rgba(108,92,231,.25)}
+.btn-grad:hover{filter:brightness(1.06)}
+.btn-soft{background:var(--surface);color:var(--ink);border:1px solid var(--line-strong)}
+.btn-soft:hover{border-color:var(--primary);color:var(--primary)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:8px}
+
+.socials{display:flex;gap:8px}
+.socials a{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;text-decoration:none;color:var(--primary);background:var(--primary-soft);transition:background .2s,color .2s}
+.socials a:hover{background:var(--primary);color:#fff}
+
+/* footer */
+.foot{margin-top:48px;border-top:1px solid var(--line);background:var(--surface)}
+.foot .shell{display:flex;justify-content:center;padding-block:22px}
+.foot p{font-size:.88rem;color:var(--faint)}
+
+@media (prefers-reduced-motion: reduce){ *,*::before,*::after{transition:none!important;scroll-behavior:auto!important} }
+
+/* language switch */
+.lang{order:2;font:inherit;font-size:.88rem;font-weight:700;color:var(--primary);background:var(--primary-soft);border:1px solid transparent;border-radius:999px;padding:7px 14px;display:inline-flex;align-items:center;gap:7px;cursor:pointer;flex:none;transition:border-color .2s}
+.lang:hover{border-color:var(--primary)}
+.lang i{font-size:.85rem}
+@media (max-width:820px){ .nav{order:3} .lang{margin-inline-start:auto} }
+/* English (LTR) fixes */
+html[dir="ltr"] .fa-arrow-left::before{content:"\f061"}
+html[dir="ltr"] .fa-chevron-left::before{content:"\f054"}
+html[dir="ltr"] .item:hover .go{transform:translateX(3px)}
+
+</style>
+<style>
+/* index: centered name block + 3/2 grid of the five destinations */
+.hero{padding-block:24px 8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+.wordmark{font-family:var(--f-word);font-weight:400;font-size:clamp(2.8rem,9vw,4.6rem);line-height:1.3;letter-spacing:.01em;direction:ltr;color:var(--ink)}
+.wordmark span{color:var(--primary)}
+.hero p{color:var(--muted);font-size:1.05rem}
+.hero p b{color:var(--primary);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.card-link{grid-column:span 2;position:relative;display:flex;flex-direction:column;gap:10px;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);text-decoration:none;color:var(--ink);min-width:0;transition:border-color .2s, box-shadow .2s}
+.card-link.wide{grid-column:span 3}
+.card-link:hover{border-color:#b9b0f6;box-shadow:var(--shadow-hover)}
+.card-link .ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:var(--primary-soft);color:var(--primary);font-size:20px;margin-bottom:6px}
+.card-link .label{font-size:1.12rem;font-weight:800}
+.card-link .description{color:var(--muted);font-size:.93rem;line-height:1.7}
+.card-link .go{position:absolute;top:26px;inset-inline-end:24px;color:var(--faint);font-size:.85rem;transition:color .2s, transform .2s}
+.card-link:hover .go{color:var(--primary);transform:translateX(-3px)}
+@media (max-width:860px){ .grid{grid-template-columns:repeat(2,minmax(0,1fr))} .card-link,.card-link.wide{grid-column:span 1} .card-link.last{grid-column:span 2} }
+@media (max-width:540px){ .grid{grid-template-columns:1fr} .card-link,.card-link.wide,.card-link.last{grid-column:auto} }
+</style>
+
+</head>
+<body>
+<header class="topbar">
+  <div class="shell">
+    <a class="brand" href="index.html" aria-label="SALMAN UTASA — الصفحة الرئيسية">
+      <span class="mark"><i class="fa-solid fa-graduation-cap"></i></span>
+      <span class="word">Salman <span style="color:var(--primary)">Utasa</span></span>
+    </a>
+    <nav class="nav" aria-label="صفحات الموقع">
+      <a href="index.html" class="on" aria-current="page"><i class="fa-solid fa-house"></i><span data-en="Home">الرئيسية</span></a>
+      <a href="utas-rules.html"><i class="fa-solid fa-book-open"></i><span data-en="UTAS Rules">قوانين UTAS</span></a>
+      <a href="summaries.html"><i class="fa-solid fa-laptop-code"></i><span data-en="IT Courses">شروحات IT</span></a>
+      <a href="calculator.html"><i class="fa-solid fa-calculator"></i><span data-en="GPA Calculator">حاسبة المعدل</span></a>
+    </nav>
+    <button class="lang" id="langBtn" type="button" aria-label="Change language / تغيير اللغة"><i class="fa-solid fa-globe"></i><span id="langTxt">English</span></button>
+  </div>
+</header>
+
+<main class="shell page">
+  <section class="hero">
+    <h1 class="wordmark">Salman <span>Utasa</span></h1>
+    <p data-en="Tap any option to open the link <b>(and don’t forget me in your prayers 🤍)</b>">اضغط على أي خيار لفتح الرابط <b>(ولاتنسوني من دعواتكم 🤍)</b></p>
+  </section>
+
+  <section class="grid">
+    <a href="utas-rules.html" class="card-link">
+      <span class="ic"><i class="fa-solid fa-book-open"></i></span>
+      <span class="label" data-en="UTAS Rules &amp; Procedures">قوانين وإجراءات UTAS</span>
+      <span class="description" data-en="Simple explanations of the main university rules and procedures, and how to submit requests">شروحات مبسطة لأهم قوانين وإجراءات الجامعة وكيفية تقديم الطلبات</span>
+      <i class="go fa-solid fa-arrow-left"></i>
+    </a>
+    <a href="summaries.html" class="card-link">
+      <span class="ic"><i class="fa-solid fa-laptop-code"></i></span>
+      <span class="label" data-en="IT Course Explanations">شروحات مواد IT</span>
+      <span class="description" data-en="Explanations and information to help you understand IT specialization courses">شروحات ومعلومات تساعدك على فهم مواد تخصص تقنية المعلومات</span>
+      <i class="go fa-solid fa-arrow-left"></i>
+    </a>
+    <a href="https://drive.google.com/drive/folders/1B4RJMdFkuIPIRMHhiu5Zg12lvozRBF0Q?usp=sharing" target="_blank" rel="noopener noreferrer" class="card-link">
+      <span class="ic"><i class="fa-solid fa-folder-open"></i></span>
+      <span class="label" data-en="Summaries &amp; Files">الملخصات والملفات</span>
+      <span class="description" data-en="Course summaries, past exams and useful projects for students">ملخصات المواد ونماذج الاختبارات والمشاريع المفيدة للطلاب</span>
+      <i class="go fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+    <a href="calculator.html" class="card-link wide">
+      <span class="ic"><i class="fa-solid fa-calculator"></i></span>
+      <span class="label" data-en="GPA Calculator">حاسبة المعدل</span>
+      <span class="description" data-en="Calculate your semester and cumulative GPA quickly and easily">احسب معدلك الفصلي والتراكمي بطريقة سهلة وسريعة</span>
+      <i class="go fa-solid fa-arrow-left"></i>
+    </a>
+    <a href="https://www.instagram.com/salman_utasa?igsi=Ymxsemd2YnpmbjBl&utm_source=qr" target="_blank" rel="noopener noreferrer" class="card-link wide last">
+      <span class="ic"><i class="fa-brands fa-instagram"></i></span>
+      <span class="label" data-en="Instagram Account">حساب الإنستجرام</span>
+      <span class="description" data-en="Follow the account for the latest updates and important information for UTAS students">تابع الحساب لمعرفة آخر التحديثات والمعلومات المهمة لطلاب UTAS</span>
+      <i class="go fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="shell"><p>© <span class="yr"></span> <span data-en="Salman Utasa">سلمان يوتاسا</span></p></div>
+</footer>
+<script>
+(function(){
+  function applyLang(){
+    var en = LANG === 'en';
+    document.documentElement.lang = LANG; document.documentElement.dir = en ? 'ltr' : 'rtl';
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      if (!el.hasAttribute('data-ar')) el.setAttribute('data-ar', el.innerHTML);
+      el.innerHTML = en ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+    });
+    document.getElementById('langTxt').textContent = en ? 'العربية' : 'English';
+  }
+  document.getElementById('langBtn').addEventListener('click', function(){
+    LANG = LANG === 'en' ? 'ar' : 'en';
+    try{ localStorage.setItem('su-lang', LANG); }catch(e){}
+    applyLang();
+    document.dispatchEvent(new Event('langchange'));
+  });
+  applyLang();
+  document.querySelectorAll('.yr').forEach(function(e){ e.textContent = new Date().getFullYear(); });
+})();
+</script>
+</body>
+</html>
